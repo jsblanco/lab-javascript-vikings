@@ -76,29 +76,15 @@ class War {
     }
 /////////////////////////////////////////////////////
 
-genericAttack(attacker){
-    if (attacker === "Saxon"){
-        this.positionAttacker=this.positionSaxon,
-        this.positionDefender= this.positionViking,
-        this.attackerArmy=this.saxonArmy,
-        this.defenderArmy=this.vikingArmy
-    } else if (attacker === "Vicking"){
-        this.positionAttacker=this.positionViking,
-        this.positionDefender= this.positionSaxon,
-        this.attackerArmy=this.vikingArmy,
-        this.defenderArmy=this.saxonArmy
-    } else {return 'Please input valid contenders'}
-    
-    this.positionAttacker = random(this.attackerArmy.length);
-    this.positionDefender = random(this.defenderArmy.length);
-    let result = (this.defenderArmy[this.positionDefender].receiveDamage(this.attackerArmy[this.positionAttacker].strength))
-    if (this.defenderArmy[this.positionDefender].health <= 0){  this.defenderArmy.splice(this.positionDefender)}
+
+genericAttack(attacker, defender){
+    let positionAttacker = random(attacker.length);
+    let positionDefender = random(defender.length);
+    let result = (defender[positionDefender].receiveDamage(attacker[positionAttacker].strength))
+    if (defender[positionDefender].health <= 0){defender.splice(positionDefender)}
     return result
 }
     
-
-
-
 
 /////////////////////////////////////////////////////////
     showStatus(){
